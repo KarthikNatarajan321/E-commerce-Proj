@@ -43,3 +43,67 @@
     font-weight: bold;
   }
   
+  /* Summary Container Styles */
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Adjust the width as needed */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Light background color */
+}
+
+.summary-container h2 {
+  margin-bottom: 10px;
+}
+
+.promo-code-section,
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.promo-code-section input[type="text"] {
+  width: 70%; /* Adjust as needed */
+  padding: 5px;
+}
+
+.promo-code-section button {
+  padding: 5px 10px;
+  background-color: #007BFF; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.promo-code-section button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.total-section p {
+  margin: 0;
+}
+
+.total-section {
+  padding: 5px 0;
+}
+
+.checkout-button {
+  padding: 10px;
+  background-color: #4CAF50; /* Green color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.checkout-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

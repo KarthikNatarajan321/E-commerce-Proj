@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './CSS/ShoppingBag.css';
 import P3 from '../Pages/images/p3.png';
 import P4 from '../Pages/images/p4.png';
@@ -29,6 +29,12 @@ const cartItems = [
 
 function ShoppingCart() {
   const [items, setItems] = useState(cartItems);
+  
+  // Calculate totals
+  const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const shipping = 5.00; // Flat shipping rate
+  const tax = subtotal * 0.06; // Assume a 6% tax rate
+  const estimatedTotal = subtotal + shipping + tax;
 
   const handleIncrement = (id) => {
     setItems((prevItems) =>
@@ -76,6 +82,39 @@ function ShoppingCart() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Summary Section */}
+      <div className="summary-container">
+        <h2>Summary</h2>
+
+        <div className="promo-code-section">
+            <p>Promo Code:</p>
+            <input type="text" placeholder="Enter promo code" />
+            <button>Apply</button>
+        </div>
+
+        <div className="total-section">
+            <p>Subtotal:</p>
+            <p>${subtotal.toFixed(2)}</p>
+        </div>
+
+        <div className="total-section">
+            <p>Shipping:</p>
+            <p>$5.00</p>
+        </div>
+
+        <div className="total-section">
+            <p>Tax:</p>
+            <p>${tax.toFixed(2)}</p>
+        </div>
+
+        <div className="total-section" style={{ fontWeight: 'bold' }}>
+            <p>Estimated Total:</p>
+            <p>${estimatedTotal.toFixed(2)}</p>
+        </div>
+
+        <button className="checkout-button">Checkout</button>
       </div>
     </div>
   );
