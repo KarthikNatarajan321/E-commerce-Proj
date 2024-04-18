@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './CSS/ShoppingBag.css';
 import P3 from '../Pages/images/p3.png';
 import P4 from '../Pages/images/p4.png';
+import plus from '../Pages/images/plus-square.svg';
+import minus from '../Pages/images/dash-square.svg';
 
 const cartItems = [
   {
@@ -58,7 +60,12 @@ function ShoppingCart() {
 
   return (
     <div className="shopping-bag-container">
-      <h1>Shopping Cart</h1>
+      <div className='product-details'>
+      <div className="heads">
+        <p className='product_head'>Product</p>
+        <p className='price_head'>Price</p>
+        <p className='total_head'>Total</p>
+      </div>
       <div className="cart-container">
         {items.map((item) => (
           <div key={item.id} className="cart-item">
@@ -66,27 +73,24 @@ function ShoppingCart() {
             <div className="item-details">
               <h3>{item.name}</h3>
               <p>Quantity: {item.quantity}</p>
-              <button
-                className="count-btn"
-                onClick={() => handleIncrement(item.id)}
-              >
-                +
+              <div className='btn-container'>
+              <button className="count-btn" onClick={() => handleIncrement(item.id)}>
+                <img className='plus-minus-btn' src={plus} alt="plus"/>
               </button>
-              <button
-                className="count-btn"
-                onClick={() => handleDecrement(item.id)}
-              >
-                -
+              <button className="count-btn" onClick={() => handleDecrement(item.id)}>
+                <img className='plus-minus-btn' src={minus} alt="minus" />
               </button>
-              <p className="price">Price: ${item.price.toFixed(2)}</p>
+              </div>
             </div>
+            <p className="price">${item.price.toFixed(2)}</p>
+            <p className="total_price">${(item.price*item.quantity).toFixed(2)}</p>
           </div>
         ))}
       </div>
-
+      </div>
       {/* Summary Section */}
       <div className="summary-container">
-        <h2>Summary</h2>
+        <h2 className='summary-head'>Summary</h2>
 
         <div className="promo-code-section">
             <p>Promo Code:</p>
@@ -109,7 +113,7 @@ function ShoppingCart() {
             <p>${tax.toFixed(2)}</p>
         </div>
 
-        <div className="total-section" style={{ fontWeight: 'bold' }}>
+        <div className="total-section est-total" style={{ fontWeight: 'bold' }}>
             <p>Estimated Total:</p>
             <p>${estimatedTotal.toFixed(2)}</p>
         </div>
